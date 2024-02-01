@@ -25,7 +25,7 @@ const Loginform = (props) => {
         username,
         password,
       });
-
+      console.log(user)
       window.localStorage.setItem("loggedBlogAppUser", JSON.stringify(user));
 
       blogService.setToken(user.token);
