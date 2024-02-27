@@ -8,7 +8,7 @@ import About from "./About";
 import Users from "./usersdetail";
 import Home from "./Home";
 import Blogform from "./newblog";
-import Blog from "./user";
+import Blog from "./blogdetail";
 import Subscriber from "./subscribers";
 
 const Menubar = (props) => {

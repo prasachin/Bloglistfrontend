@@ -3,6 +3,7 @@ import authService from "../services/login";
 import { useState } from "react";
 import blogService from "../services/blogs";
 import { useNavigate } from "react-router-dom";
+import Blog from "./blogdetail";
 
 const signstyle = {
   fontSize: "16px",
@@ -10,12 +11,13 @@ const signstyle = {
   textAlign: "center",
   marginTop: "10px",
 };
+
 const Loginform = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
   const [user, setUser] = useState(null);
-
+  const showBlog = null;
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
@@ -25,7 +27,6 @@ const Loginform = (props) => {
         username,
         password,
       });
-      console.log(user)
       window.localStorage.setItem("loggedBlogAppUser", JSON.stringify(user));
 
       blogService.setToken(user.token);
@@ -37,7 +38,6 @@ const Loginform = (props) => {
       setUser(user);
       setUsername("");
       setPassword("");
-      // console.log(user);
     } catch (error) {
       setUsername("");
       setPassword("");

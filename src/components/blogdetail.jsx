@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import blogService from "../services/blogs";
 import { Row, Col, Button, Alert } from "react-bootstrap";
-const Blog = () => {
+const Blog = (props) => {
   const [blog, setBlog] = useState(null);
   const [message, setMessage] = useState(null);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [Cvisible, setCvisible] = useState(false);
   const [Cfvisible, setCfvisible] = useState(false);
-
+  const [liked, setLiked] = useState(false);
+  const location = useLocation();
+  const user = location.state && location.state.user;
+  const navigate = useNavigate();
   const { id } = useParams();
-
   useEffect(() => {
     blogService.getAll().then((blogs) => {
       const foundBlog = blogs.find((blog) => blog.id === id);
@@ -24,29 +27,45 @@ const Blog = () => {
   }
 
   const handlelike = async () => {
-    try {
-      await blogService.update(blog.id);
-      blog.likes = blog.likes + 1;
-      setMessage(`You Liked The Blog ${blog.title}`);
+    if (liked) {
+      setMessage("You already liked?");
       setTimeout(() => {
         setMessage(null);
-      }, 2000);
-    } catch (error) {
-      console.error("failed to like the blog ", error.message);
+      }, 3000);
+    } else {
+      try {
+        await blogService.update(blog.id);
+        blog.likes = blog.likes + 1;
+        setLiked(true);
+        setMessage(`You Liked The Blog ${blog.title}`);
+        setTimeout(() => {
+          setMessage(null);
+        }, 2000);
+      } catch (error) {
+        console.error("failed to like the blog ", error.message);
+      }
     }
   };
 
   const handledelete = async () => {
     const confirm = window.confirm(`Are you sure to Delete ${blog.title}!!`);
     if (confirm) {
-      try {
-        await blogService.deletee(blog.id);
-        setMessage(`${blog.title} Removed from your App`);
+      if (user.username === blog.user.username) {
+        try {
+          await blogService.deletee(blog.id);
+          setMessage(`${blog.title} Removed from your App`);
+          setTimeout(() => {
+            setMessage(null);
+            navigate("/");
+          }, 2000);
+        } catch (error) {
+          console.error("Cant delete this blog !", error.message);
+        }
+      } else {
+        setMessage("You are Unauthorized to Delete.");
         setTimeout(() => {
           setMessage(null);
-        }, 2000);
-      } catch (error) {
-        console.error("Cant delete this blog !", error.message);
+        }, 3000);
       }
     }
   };
@@ -70,13 +89,13 @@ const Blog = () => {
 
       <Row>
         <Col>
-          <h1>Title: {blog.title}</h1>
+          <h1>TITLE: {blog.title}</h1>
           <h3>Author: {blog.author}</h3>
           <h3>
-            Url: <a href={blog.url}>{blog.url}</a>
+            URL: <a href={blog.url}>{blog.url}</a>
           </h3>
           <h3>
-            Likes: {blog.likes} <button onClick={handlelike}>Like</button>
+            LIKES: {blog.likes} <button onClick={handlelike}>Like</button>
           </h3>
         </Col>
       </Row>

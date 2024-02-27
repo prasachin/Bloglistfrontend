@@ -1,10 +1,8 @@
 import { Alert, Form, Button } from "react-bootstrap";
-import authService from "../services/login";
 import { useState, useEffect } from "react";
 import blogService from "../services/blogs";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import Blog from "./Blog";
 
 const Blogform = (props) => {
   const [blogs, setBlogs] = useState([]);
@@ -19,7 +17,6 @@ const Blogform = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const user = location.state && location.state.user;
-
   const toggleformVisibility = () => {
     setformVisible(!formVisible);
   };
@@ -32,6 +29,15 @@ const Blogform = (props) => {
     blogService.getAll().then((blogs) => setBlogs(blogs));
   }, []);
 
+  const blogStyle = {
+    paddingTop: 10,
+    paddingLeft: 2,
+    border: "solid",
+    borderWidth: 1.5,
+    marginBottom: 8,
+    cursor: "pointer",
+    color: "blue",
+  };
   const handlelogout = () => {
     const confirm = window.confirm(`Are you sure to logout ${user.name}!!`);
     if (confirm) {
@@ -43,6 +49,11 @@ const Blogform = (props) => {
       }, 3000);
     }
   };
+
+  const handleblog = (blog) => {
+    navigate(`/Blogs/${blog.id}`, { state: { user } });
+  };
+
   const addNew = async (event) => {
     event.preventDefault();
     try {
@@ -83,9 +94,9 @@ const Blogform = (props) => {
       </h1>
       {formVisible && (
         <div>
-          <h2>Fill Following Details to add New Blog!!</h2>
+          <h2>Fill Following Details to add New Blog!</h2>
           <Form.Group>
-            <Form.Label>Title:</Form.Label>
+            <Form.Label>TITLE:</Form.Label>
             <Form.Control
               type="text"
               value={title}
@@ -95,7 +106,7 @@ const Blogform = (props) => {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Author:</Form.Label>
+            <Form.Label>AUTHOR:</Form.Label>
             <Form.Control
               type="text"
               value={author}
@@ -105,7 +116,7 @@ const Blogform = (props) => {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Url:</Form.Label>
+            <Form.Label>URL:</Form.Label>
             <Form.Control
               type="text"
               value={url}
@@ -115,7 +126,7 @@ const Blogform = (props) => {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Likes:</Form.Label>
+            <Form.Label>LIKES:</Form.Label>
             <Form.Control
               type="text"
               value={likes}
@@ -134,7 +145,13 @@ const Blogform = (props) => {
         <div>
           <h2>Existing blogs</h2>
           {blogs.map((blog) => (
-            <Blog key={blog.id} blog={blog} />
+            <div
+              key={blog.id}
+              style={blogStyle}
+              onClick={() => handleblog(blog)}
+            >
+              <h2 key={blog.id}>{blog.title}</h2>
+            </div>
           ))}
         </div>
       )}
