@@ -4,6 +4,7 @@ import { useState } from "react";
 import blogService from "../services/blogs";
 import { useNavigate } from "react-router-dom";
 import Blog from "./blogdetail";
+import { useUser } from "./UserContext";
 
 const signstyle = {
   fontSize: "16px",
@@ -18,6 +19,8 @@ const Loginform = (props) => {
   const [message, setMessage] = useState(null);
   const [user, setUser] = useState(null);
   const showBlog = null;
+
+  const { setuser } = useUser();
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
@@ -33,6 +36,7 @@ const Loginform = (props) => {
       setMessage(`Welcome ${user.name} , Create your Blogs!!`);
       setTimeout(() => {
         setMessage(null);
+        setuser(user);
         navigate("/blogform", { state: { user } });
       }, 3000);
       setUser(user);

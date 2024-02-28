@@ -17,28 +17,30 @@ const Home = () => {
   };
   return (
     <div>
-      <h1>Welcome to Our Blog Platform!</h1>
+      <h1 style={{ fontWeight: "bold" }}>Welcome to Our Blog Platform!</h1>
       <p>
         Discover a world of captivating stories, insightful articles, and
         thought-provoking content curated just for you. Our blog community is a
         diverse space where writers from around the globe share their
         experiences, expertise, and passions.
       </p>
-      <h2>Explore Our Featured Blogs</h2>
+      <h2 style={{ fontWeight: "bold" }}>Explore Our Featured Blogs</h2>
       <p>
         Dive into a variety of topics that span from technology and science to
         lifestyle and travel. Our carefully curated selection of featured blogs
         ensures that you get a taste of the best content from our talented
         contributors.
       </p>
-      <h2>Connect with Like-minded Readers and Writers</h2>
+      <h2 style={{ fontWeight: "bold" }}>
+        Connect with Like-minded Readers and Writers
+      </h2>
       <p>
         Join our vibrant community of readers and writers. Engage in
         conversations, share your thoughts in the comments, and connect with
         fellow enthusiasts. Whether you're a seasoned writer or just love
         exploring new ideas, there's a place for you here.
       </p>
-      <h2>Create Your Own Blog</h2>
+      <h2 style={{ fontWeight: "bold" }}>Create Your Own Blog</h2>
       <p>
         Ready to share your stories with the world? Start your own blog on our
         platform. It's easy to get started, and you'll have the opportunity to
@@ -47,7 +49,7 @@ const Home = () => {
       </p>
       {message && <Alert variant="warning">{message}</Alert>}
       <button onClick={handlenew}>CreateBlog</button>
-      <h2>Stay Updated</h2>
+      <h2 style={{ fontWeight: "bold" }}>Stay Updated</h2>
       <p>
         Never miss out on the latest content. Subscribe to our newsletter and
         receive regular updates on new blog posts, community events, and

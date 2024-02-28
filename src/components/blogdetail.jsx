@@ -81,6 +81,14 @@ const Blog = (props) => {
     setCfvisible(!Cfvisible);
   };
 
+  const blogStyle = {
+    paddingTop: 10,
+    paddingLeft: 2,
+    border: "solid",
+    borderWidth: 1.5,
+    marginBottom: 8,
+  };
+
   return (
     <div>
       <Row>
@@ -89,20 +97,20 @@ const Blog = (props) => {
 
       <Row>
         <Col>
-          <h1>TITLE: {blog.title}</h1>
-          <h3>Author: {blog.author}</h3>
-          <h3>
+          <h1 style={blogStyle}>TITLE: {blog.title}</h1>
+          <h3 style={blogStyle}>AUTHOR: {blog.author}</h3>
+          <h3 style={{ marginLeft: "307px" }}>
             URL: <a href={blog.url}>{blog.url}</a>
           </h3>
-          <h3>
+          <h3 style={{ ...blogStyle, paddingRight: "180px" }}>
             LIKES: {blog.likes} <button onClick={handlelike}>Like</button>
           </h3>
         </Col>
       </Row>
 
-      <Row>
+      <Row style={blogStyle}>
         <Col>
-          <div>
+          <div style={{ paddingRight: "35px" }}>
             Click Delete To Remove This Blog
             <button onClick={handledelete}>Delete</button>
           </div>
@@ -111,7 +119,7 @@ const Blog = (props) => {
       <Row>
         <Col>
           <h4
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", paddingRight: "45px" }}
             onClick={() => {
               setCvisible(!Cvisible);
             }}
@@ -127,7 +135,7 @@ const Blog = (props) => {
         </Col>
       </Row>
 
-      <Row>
+      <Row style={blogStyle}>
         <Col>
           {!Cfvisible && (
             <div>

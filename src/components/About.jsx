@@ -1,7 +1,49 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useUser } from "./UserContext";
 
 const About = () => {
+  const { user } = useUser();
+  const [message, setMessage] = useState(null);
+  const navigate = useNavigate();
+  const handleimg1 = () => {
+    if (!user) {
+      setMessage("New to the App? Signup to view!");
+      setTimeout(() => {
+        setMessage(null);
+        navigate("/signupform");
+      }, 3000);
+    } else {
+      navigate("/Blogs/65a105c3e4147f5484b38460");
+    }
+  };
+
+  const handleimg2 = () => {
+    if (!user) {
+      setMessage("New to the App? Signup to view!");
+      setTimeout(() => {
+        setMessage(null);
+        navigate("/signupform");
+      }, 3000);
+    } else {
+      navigate("/Blogs/658fac92b1e1dd92836ebce3");
+    }
+  };
+
+  const handleimg3 = () => {
+    if (!user) {
+      setMessage("New to the App? Signup to view!");
+      setTimeout(() => {
+        setMessage(null);
+        navigate("/signupform");
+      }, 3000);
+    } else {
+      navigate("/Blogs/659d2cc082f1b4433c92bd23");
+    }
+  };
+
   return (
     <Container>
       <h1>About Blog List App</h1>
@@ -12,6 +54,7 @@ const About = () => {
       </p>
 
       <h2>Famous Tour</h2>
+      <h2>{message && <Alert variant="success">{message}</Alert>}</h2>
       <p>
         Explore some of the famous tours featured in our blog community. Here
         are a few highlights:
@@ -23,6 +66,8 @@ const About = () => {
             src="assets\images\tour1.jpeg"
             alt="Tour 1"
             className="img-fluid"
+            onClick={handleimg1}
+            style={{ cursor: "pointer" }}
           />
           <p>Tour 1: Discover the Beauty</p>
         </Col>
@@ -31,6 +76,8 @@ const About = () => {
             src="assets\images\tour2.jpeg"
             alt="Tour 2"
             className="img-fluid"
+            onClick={handleimg2}
+            style={{ cursor: "pointer" }}
           />
           <p>Tour 2: Adventure Awaits</p>
         </Col>
@@ -39,6 +86,8 @@ const About = () => {
             src="assets\images\tour3.jpeg"
             alt="Tour 3"
             className="img-fluid"
+            onClick={handleimg3}
+            style={{ cursor: "pointer" }}
           />
           <p>Tour 3: Cultural Delights</p>
         </Col>

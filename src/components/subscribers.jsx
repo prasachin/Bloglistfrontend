@@ -15,6 +15,7 @@ const Subscriber = () => {
   };
 
   const handleDonate = () => {
+    navigate("/donation")
     setMessage("Thank You for Your Donation!");
     setTimeout(() => {
       setMessage(null);

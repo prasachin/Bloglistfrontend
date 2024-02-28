@@ -28,7 +28,7 @@ const App = () => {
   return (
     <div>
       {message && <Alert varient="success">{message}</Alert>}
-      <h2>Welcome back </h2>
+      <h2 style={{ fontWeight: "bold" }}>Welcome Back </h2>
       <Menubar />
       <Footer />
     </div>
