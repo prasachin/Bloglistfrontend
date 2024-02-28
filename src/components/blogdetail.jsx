@@ -99,10 +99,10 @@ const Blog = (props) => {
         <Col>
           <h1 style={blogStyle}>TITLE: {blog.title}</h1>
           <h3 style={blogStyle}>AUTHOR: {blog.author}</h3>
-          <h3 style={{ marginLeft: "307px" }}>
+          <h3>
             URL: <a href={blog.url}>{blog.url}</a>
           </h3>
-          <h3 style={{ ...blogStyle, paddingRight: "180px" }}>
+          <h3 >
             LIKES: {blog.likes} <button onClick={handlelike}>Like</button>
           </h3>
         </Col>
@@ -110,7 +110,7 @@ const Blog = (props) => {
 
       <Row style={blogStyle}>
         <Col>
-          <div style={{ paddingRight: "35px" }}>
+          <div >
             Click Delete To Remove This Blog
             <button onClick={handledelete}>Delete</button>
           </div>
@@ -119,7 +119,7 @@ const Blog = (props) => {
       <Row>
         <Col>
           <h4
-            style={{ cursor: "pointer", paddingRight: "45px" }}
+            style={{ cursor: "pointer" }}
             onClick={() => {
               setCvisible(!Cvisible);
             }}
