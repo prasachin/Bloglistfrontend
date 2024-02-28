@@ -69,27 +69,27 @@ const About = () => {
             onClick={handleimg1}
             style={{ cursor: "pointer" }}
           />
-          <p>Tour 1: Discover the Beauty</p>
+          <p>Tour 1:A Day With sammy</p>
         </Col>
         <Col md={4}>
           <img
-            src="assets\images\tour2.jpeg"
+            src="assets\images\tour2.webp"
             alt="Tour 2"
             className="img-fluid"
             onClick={handleimg2}
             style={{ cursor: "pointer" }}
           />
-          <p>Tour 2: Adventure Awaits</p>
+          <p>Tour 2: Bihar's Politics</p>
         </Col>
         <Col md={4}>
           <img
-            src="assets\images\tour3.jpeg"
+            src="assets\images\tour3.png"
             alt="Tour 3"
             className="img-fluid"
             onClick={handleimg3}
             style={{ cursor: "pointer" }}
           />
-          <p>Tour 3: Cultural Delights</p>
+          <p>Tour 3:Campus tour IIT BH</p>
         </Col>
       </Row>
     </Container>
