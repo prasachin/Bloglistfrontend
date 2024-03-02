@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Alert, Navbar, Nav, Button, Image } from "react-bootstrap";
+import { Alert, Navbar, Nav, Button, Image, Dropdown } from "react-bootstrap";
 import Loginform from "./loginform";
 import Signup from "./signup";
 import About from "./About";
@@ -77,9 +77,23 @@ const Menubar = (props) => {
                       />
                     </Link>
                   ) : (
-                    <Link to="/loginform">
-                      <Button variant="outline-light">Login</Button>
-                    </Link>
+                    <Dropdown>
+                      <Dropdown.Toggle variant="light" id="dropdown-basic">
+                        <Image
+                          src="https://res.cloudinary.com/dbduadsbd/image/upload/v1709375511/ohionixpgqmfzsxnpftt.png"
+                          alt="Profile"
+                          roundedCircle
+                          style={{ width: "40px", height: "40px" }}
+                        />
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item href="/loginform">Login</Dropdown.Item>
+                        <Dropdown.Item href="/signupform">
+                          Sign Up
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   )}
                 </Nav.Item>
               );
