@@ -1,7 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Alert, Navbar, Nav } from "react-bootstrap";
+import { Alert, Navbar, Nav, Button, Image } from "react-bootstrap";
 import Loginform from "./loginform";
 import Signup from "./signup";
 import About from "./About";
@@ -11,7 +10,8 @@ import Blogform from "./newblog";
 import Blog from "./blogdetail";
 import Subscriber from "./subscribers";
 import Donation from "./Donation";
-import { UserProvider } from "./UserContext";
+import { UserProvider, UserContext } from "./UserContext";
+import EditButton from "./profile";
 
 const Menubar = (props) => {
   const [message, setMessage] = useState(null);
@@ -24,7 +24,7 @@ const Menubar = (props) => {
   return (
     <UserProvider>
       <Router>
-        {message && <Alert varient="success">{message}</Alert>}
+        {message && <Alert variant="success">{message}</Alert>}
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -61,6 +61,30 @@ const Menubar = (props) => {
               </Link>
             </Nav.Link>
           </Navbar.Collapse>
+          <UserContext.Consumer>
+            {(user) => {
+              return (
+                <Nav.Item>
+                  {user.user ? (
+                    <Link
+                      to={{ pathname: "/profile", state: { user: user.user } }}
+                    >
+                      <Image
+                        src={user.user.profileicon}
+                        alt="Profile"
+                        roundedCircle
+                        style={{ width: "60px", height: "60px" }}
+                      />
+                    </Link>
+                  ) : (
+                    <Link to="/loginform">
+                      <Button variant="outline-light">Login</Button>
+                    </Link>
+                  )}
+                </Nav.Item>
+              );
+            }}
+          </UserContext.Consumer>
         </Navbar>
         <Routes>
           <Route path="/loginform" element={<Loginform />} />
@@ -73,6 +97,7 @@ const Menubar = (props) => {
           <Route path="/create-blog" element={<Loginform />} />
           <Route path="/donation" element={<Donation />} />
           <Route path="/subscribe" element={<Subscriber />} />
+          <Route path="/profile" element={<EditButton />} />
         </Routes>
       </Router>
     </UserProvider>

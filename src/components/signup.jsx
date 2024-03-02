@@ -9,13 +9,25 @@ const Signup = (props) => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState(null);
+  const [profileicon, setprofileicon] = useState(null);
 
   const navigate = useNavigate();
 
+  const handlefilechange = (event) => {
+    const file = event.target.files[0];
+    setprofileicon(file);
+  };
+
   const handlesignup = async (event) => {
     event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("name", name);
+    formData.append("password", password);
+    formData.append("profileicon", profileicon);
     try {
-      const newuser = await blogService.signup(username, name, password);
+      const newuser = await blogService.signup(formData);
       setMessage(`${name} signed up , Login And Create your blogs!`);
       setTimeout(() => {
         setMessage(null);
@@ -24,6 +36,7 @@ const Signup = (props) => {
       setName("");
       setUsername("");
       setPassword("");
+      setprofileicon(null);
     } catch (error) {
       if (!username || !password) {
         setMessage(`Username and Password Required `);
@@ -34,6 +47,7 @@ const Signup = (props) => {
       setName("");
       setUsername("");
       setPassword("");
+      setprofileicon(null);
       console.error("Cant signup ", error.message);
     }
   };
@@ -64,6 +78,19 @@ const Signup = (props) => {
           value={password}
           onChange={({ target }) => setPassword(target.value)}
           placeholder="Password"
+        />
+      </Form.Group>
+      <Form.Group controlId="profileicon">
+        <Form.Label>Profile Photo:</Form.Label>
+        <Form.Control
+          type="file"
+          onChange={handlefilechange}
+          accept="image/*"
+          required
+          style={{
+            backgroundColor: "rgb(130, 194, 194)",
+            border: "0px solid #ced4da",
+          }}
         />
       </Form.Group>
       <br />

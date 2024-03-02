@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import blogService from "../services/blogs";
 import { Row, Col, Button, Alert } from "react-bootstrap";
+
 const Blog = (props) => {
   const [blog, setBlog] = useState(null);
   const [message, setMessage] = useState(null);
@@ -15,6 +16,7 @@ const Blog = (props) => {
   const user = location.state && location.state.user;
   const navigate = useNavigate();
   const { id } = useParams();
+
   useEffect(() => {
     blogService.getAll().then((blogs) => {
       const foundBlog = blogs.find((blog) => blog.id === id);
@@ -97,12 +99,12 @@ const Blog = (props) => {
 
       <Row>
         <Col>
-          <h1 style={blogStyle}>TITLE: {blog.title}</h1>
+          <h1>TITLE: {blog.title}</h1>
           <h3 style={blogStyle}>AUTHOR: {blog.author}</h3>
           <h3>
             URL: <a href={blog.url}>{blog.url}</a>
           </h3>
-          <h3 >
+          <h3 style={blogStyle}>
             LIKES: {blog.likes} <button onClick={handlelike}>Like</button>
           </h3>
         </Col>
@@ -110,9 +112,11 @@ const Blog = (props) => {
 
       <Row style={blogStyle}>
         <Col>
-          <div >
+          <div>
             Click Delete To Remove This Blog
-            <button onClick={handledelete}>Delete</button>
+            <Button variant="danger" onClick={handledelete}>
+              Delete
+            </Button>
           </div>
         </Col>
       </Row>

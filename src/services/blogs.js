@@ -1,7 +1,8 @@
 import axios from "axios";
 const baseUrl = "https://bloglistapp-vej2.onrender.com/api/blogs";
 
-const signurl = "https://bloglistapp-vej2.onrender.com/api/users";
+// const signurl = "https://bloglistapp-vej2.onrender.com/api/users";
+const signurl = "http://localhost:3003/api/users";
 
 let token = null;
 
@@ -48,9 +49,19 @@ const deletee = (id) => {
   return request.then((response) => response.data);
 };
 
-const signup = (username, name, password) => {
-  const signupdata = { username, name, password };
-  const request = axios.post(signurl, signupdata);
+const signup = (formData) => {
+  const formdata = new FormData();
+  formdata.append("username", formData.get("username"));
+  formdata.append("name", formData.get("name"));
+  formdata.append("password", formData.get("password"));
+  if (formData.get("profileicon")) {
+    formdata.append("profileicon", formData.get("profileicon"));
+  }
+  const request = axios.post(signurl, formdata, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
   return request.then((response) => response.data);
 };
 
@@ -65,3 +76,4 @@ export default {
   getBlogById,
   addcomment,
 };
+

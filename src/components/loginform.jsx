@@ -31,7 +31,6 @@ const Loginform = (props) => {
         password,
       });
       window.localStorage.setItem("loggedBlogAppUser", JSON.stringify(user));
-
       blogService.setToken(user.token);
       setMessage(`Welcome ${user.name} , Create your Blogs!!`);
       setTimeout(() => {

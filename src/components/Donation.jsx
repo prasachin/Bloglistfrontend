@@ -1,13 +1,20 @@
+import { Container, Row, Col } from "react-bootstrap";
+
 const Donation = () => {
   return (
-    <div>
-      <h1>Scan The QR Code to Join This Family !</h1>
-      <img
-        src="assets\images\qr.jpg"
-        alt=" QR Code"
-        style={{ paddingTop: "80px", paddingBottom: "0px" }}
-      />
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <h1 className="mt-5 mb-4">Scan The QR Code to Join This Family!</h1>
+          <img
+            src="assets\images\qr.jpg"
+            alt="QR Code"
+            className="img-fluid"
+            style={{ paddingTop: "80px", paddingBottom: "0px" }}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
