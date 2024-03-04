@@ -8,7 +8,7 @@ import { useUser } from "./UserContext";
 
 const signstyle = {
   fontSize: "16px",
-  color: "#333",
+  color: "lightgrey",
   textAlign: "center",
   marginTop: "10px",
 };
@@ -81,7 +81,7 @@ const Loginform = (props) => {
           onClick={() => {
             navigate("/signupform");
           }}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", color: "lightgrey" }}
         >
           SignUp For Free
         </h4>

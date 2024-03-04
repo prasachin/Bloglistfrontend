@@ -27,8 +27,8 @@ const App = () => {
   }, []);
   return (
     <div>
+      <h2 style={{ fontWeight: "bold", marginTop: "75px" }}>Welcome Back </h2>
       {message && <Alert varient="success">{message}</Alert>}
-      <h2 style={{ fontWeight: "bold" }}>Welcome Back </h2>
       <Menubar />
       <Footer />
     </div>

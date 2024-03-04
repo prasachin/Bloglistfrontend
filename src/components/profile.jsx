@@ -39,7 +39,7 @@ export default function EditButton() {
         user.user ? (
           <div
             className="gradient-custom-2"
-            style={{ backgroundColor: "#9de2ff" }}
+            // style={{ backgroundColor: "#9de2ff" }}
           >
             <MDBContainer className="py-5 ">
               <MDBRow className="justify-content-center ">
@@ -48,7 +48,9 @@ export default function EditButton() {
                     <div
                       className="rounded-top text-white d-flex align-items-center justify-content-between"
                       style={{
-                        backgroundColor: "#000",
+                        "--bs-bg-opacity": "1",
+                        backgroundColor:
+                          "rgba(33, 37, 41, var(--bs-bg-opacity))",
                         minHeight: "200px",
                         padding: "20px",
                       }}
@@ -101,12 +103,17 @@ export default function EditButton() {
                         </div>
                       </div>
                     </div>
-                    <MDBCardBody className="text-black p-4">
+                    <MDBCardBody className="text-black p-4" style={{backgroundColor: "lightgoldenrodyellow"}}>
                       <div className="mb-5">
                         <p className="lead fw-normal mb-1">About</p>
                         <div
                           className="p-4"
-                          style={{ backgroundColor: "#f8f9fa" }}
+                          style={{
+                            "--bs-bg-opacity": "1",
+                            backgroundColor:
+                              "rgba(33, 37, 41, var(--bs-bg-opacity))",
+                              color:"lightgrey"
+                          }}
                         >
                           <MDBCardText className="font-italic mb-1">
                             <h1>Personal</h1> Nothing to show.

@@ -25,7 +25,13 @@ const Menubar = (props) => {
     <UserProvider>
       <Router>
         {message && <Alert variant="success">{message}</Alert>}
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar
+          collapseOnSelect
+          expand="lg"
+          bg="dark"
+          variant="dark"
+          style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999 }}
+        >
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -37,11 +43,6 @@ const Menubar = (props) => {
               <Nav.Link href="#" as="span">
                 <Link style={elementstyle} to="/About">
                   About
-                </Link>
-              </Nav.Link>
-              <Nav.Link href="#" as="span">
-                <Link style={elementstyle} to="/loginform">
-                  Login
                 </Link>
               </Nav.Link>
               <Nav.Link href="#" as="span">
@@ -64,7 +65,7 @@ const Menubar = (props) => {
           <UserContext.Consumer>
             {(user) => {
               return (
-                <Nav.Item>
+                <Nav.Item style={{ paddingRight: "15px" }}>
                   {user.user ? (
                     <Link
                       to={{ pathname: "/profile", state: { user: user.user } }}
@@ -73,20 +74,33 @@ const Menubar = (props) => {
                         src={user.user.profileicon}
                         alt="Profile"
                         roundedCircle
-                        style={{ width: "60px", height: "60px" }}
+                        style={{ width: "50px", height: "50px" }}
                       />
                     </Link>
                   ) : (
-                    <Dropdown>
-                      <Dropdown.Toggle variant="light" id="dropdown-basic">
+                    <Dropdown style={{ paddingRight: "25px" }}>
+                      <Dropdown.Toggle
+                        variant="light"
+                        id="dropdown-basic"
+                        style={{
+                          borderRadius: "50%",
+                          padding: 0,
+                          border: "none",
+                          width: "50px",
+                          height: "50px",
+                        }}
+                      >
                         <Image
                           src="https://res.cloudinary.com/dbduadsbd/image/upload/v1709375511/ohionixpgqmfzsxnpftt.png"
                           alt="Profile"
                           roundedCircle
-                          style={{ width: "40px", height: "40px" }}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                          }}
                         />
                       </Dropdown.Toggle>
-
                       <Dropdown.Menu>
                         <Dropdown.Item href="/loginform">Login</Dropdown.Item>
                         <Dropdown.Item href="/signupform">

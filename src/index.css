@@ -1,5 +1,6 @@
 h1 {
   color: green;
+  font-weight: bold;
 }
 
 .note {
@@ -9,7 +10,8 @@ h1 {
 }
 
 body {
-  background-color: rgb(130, 194, 194);
+  background-color: #000000;
+  color: lightgray;
 }
 
 .error {
@@ -50,5 +52,5 @@ input {
   font-size: 16px;
   text-align: center;
   width: 250px;
-  background: lightgrey;
+  background: #ccc;
 }
