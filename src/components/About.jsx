@@ -46,20 +46,38 @@ const About = () => {
 
   return (
     <Container>
-      <h1>About Blog List App</h1>
       <p>
-        Welcome to the Blog List App! This app allows users to create and manage
-        their blogs. Share your thoughts, experiences, and stories with the
-        world.
+        {message && (
+          <>
+            <Alert variant="warning">{message}</Alert>
+            <script>
+              {window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              })}
+            </script>
+          </>
+        )}
       </p>
-
-      <h2>Famous Tour</h2>
-      <h2>{message && <Alert variant="success">{message}</Alert>}</h2>
-      <p>
-        Explore some of the famous tours featured in our blog community. Here
-        are a few highlights:
-      </p>
-
+      <Row className="my-5">
+        <Col className="bg-dark bg-opacity-60 text-light">
+          <h1 className="fw-bold">About Blog List App</h1>
+          <p>
+            Welcome to the Blog List App! This app allows users to create and
+            manage their blogs. Share your thoughts, experiences, and stories
+            with the world.
+          </p>
+        </Col>
+      </Row>
+      <Row className="my-5">
+        <Col className="bg-dark bg-opacity-60 text-light">
+          <h1 className="fw-bold">Famous Tour</h1>
+          <p>
+            Explore some of the famous tours featured in our blog community.
+            Here are a few highlights:
+          </p>
+        </Col>
+      </Row>
       <Row>
         <Col md={4}>
           <img

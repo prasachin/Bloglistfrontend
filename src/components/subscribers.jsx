@@ -28,7 +28,19 @@ const Subscriber = () => {
 
   return (
     <Container>
-      {message && <Alert variant="success">{message}</Alert>}
+      <p>
+        {message && (
+          <>
+            <Alert variant="success">{message}</Alert>
+            <script>
+              {window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              })}
+            </script>
+          </>
+        )}
+      </p>
       <Row className="mb-4">
         <Col style={{ paddingTop: "10px" }}>
           <Button variant="primary" onClick={handleSubscribe}>

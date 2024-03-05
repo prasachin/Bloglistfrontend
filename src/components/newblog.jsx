@@ -85,10 +85,22 @@ const Blogform = (props) => {
 
   return (
     <form onSubmit={addNew}>
-      {message && <Alert varient="success">{message}</Alert>}
+      <p>
+        {message && (
+          <>
+            <Alert variant="success">{message}</Alert>
+            <script>
+              {window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              })}
+            </script>
+          </>
+        )}
+      </p>
       <h1>
         {user.name} Logged in !{" "}
-        <Button variant="primary" onClick={handlelogout}>
+        <Button variant="danger" onClick={handlelogout}>
           Logout
         </Button>
       </h1>

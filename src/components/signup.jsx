@@ -54,7 +54,19 @@ const Signup = (props) => {
 
   return (
     <form onSubmit={handlesignup}>
-      {message && <Alert varient="success">{message}</Alert>}
+      <p>
+        {message && (
+          <>
+            <Alert variant="success">{message}</Alert>
+            <script>
+              {window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              })}
+            </script>
+          </>
+        )}
+      </p>
       <Form.Group>
         <Form.Label>Username:</Form.Label>
         <Form.Control
@@ -88,7 +100,8 @@ const Signup = (props) => {
           accept="image/*"
           required
           style={{
-            backgroundColor: "rgb(130, 194, 194)",
+            backgroundColor: "black",
+            color: "white",
             border: "0px solid #ced4da",
           }}
         />

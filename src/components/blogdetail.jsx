@@ -94,7 +94,21 @@ const Blog = (props) => {
   return (
     <div>
       <Row>
-        <Col>{message && <Alert variant="success">{message}</Alert>}</Col>
+        <Col>
+          <p>
+            {message && (
+              <>
+                <Alert variant="success">{message}</Alert>
+                <script>
+                  {window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  })}
+                </script>
+              </>
+            )}
+          </p>
+        </Col>
       </Row>
 
       <Row>

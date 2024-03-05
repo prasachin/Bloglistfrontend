@@ -1,8 +1,8 @@
 import axios from "axios";
 const baseUrl = "https://bloglistapp-vej2.onrender.com/api/blogs";
 
-// const signurl = "https://bloglistapp-vej2.onrender.com/api/users";
-const signurl = "http://localhost:3003/api/users";
+const signurl = "https://bloglistapp-vej2.onrender.com/api/users";
+// const signurl = "http://localhost:3003/api/users";
 
 let token = null;
 

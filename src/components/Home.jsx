@@ -31,6 +31,19 @@ const Home = () => {
 
   return (
     <Container>
+      <p>
+        {message && (
+          <>
+            <Alert variant="warning">{message}</Alert>
+            <script>
+              {window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              })}
+            </script>
+          </>
+        )}
+      </p>
       <Row className="my-5">
         <Col className="bg-dark bg-opacity-60 text-light">
           <h1 className="fw-bold">Welcome to Our Blog Platform!</h1>
@@ -99,7 +112,6 @@ const Home = () => {
                     have the opportunity to reach a global audience with your
                     unique perspective. Let your voice be heard!
                   </p>
-                  {message && <Alert variant="warning">{message}</Alert>}
                   <Button onClick={handlenew} variant="primary">
                     Create Blog
                   </Button>

@@ -79,31 +79,43 @@ export default function EditButton() {
                       </MDBBtn>
                     </div>
                     <div
-                      className="p-4 text-black"
-                      style={{ backgroundColor: "#f8f9fa" }}
+                      className="p-4 text-white"
+                      style={{ backgroundColor: "black" }}
                     >
                       <div className="d-flex justify-content-end text-center py-1">
                         <div>
                           <MDBCardText className="mb-1 h5">0</MDBCardText>
-                          <MDBCardText className="small text-muted mb-0">
+                          <MDBCardText
+                            className="small text-muted mb-0"
+                            style={{ color: "white" }}
+                          >
                             Photos
                           </MDBCardText>
                         </div>
                         <div className="px-3">
                           <MDBCardText className="mb-1 h5">0</MDBCardText>
-                          <MDBCardText className="small text-muted mb-0">
+                          <MDBCardText
+                            className="small text-muted mb-0"
+                            style={{ color: "white" }}
+                          >
                             Followers
                           </MDBCardText>
                         </div>
                         <div>
                           <MDBCardText className="mb-1 h5">0</MDBCardText>
-                          <MDBCardText className="small text-muted mb-0">
+                          <MDBCardText
+                            className="small text-muted mb-0"
+                            style={{ color: "black" }}
+                          >
                             Following
                           </MDBCardText>
                         </div>
                       </div>
                     </div>
-                    <MDBCardBody className="text-black p-4" style={{backgroundColor: "lightgoldenrodyellow"}}>
+                    <MDBCardBody
+                      className="text-black p-4"
+                      style={{ backgroundColor: "grey" }}
+                    >
                       <div className="mb-5">
                         <p className="lead fw-normal mb-1">About</p>
                         <div
@@ -112,7 +124,7 @@ export default function EditButton() {
                             "--bs-bg-opacity": "1",
                             backgroundColor:
                               "rgba(33, 37, 41, var(--bs-bg-opacity))",
-                              color:"lightgrey"
+                            color: "lightgrey",
                           }}
                         >
                           <MDBCardText className="font-italic mb-1">
@@ -172,7 +184,19 @@ export default function EditButton() {
           </div>
         ) : (
           <div>
-            {message && <Alert variant="danger">{message}</Alert>}
+            <p>
+              {message && (
+                <>
+                  <Alert variant="danger">{message}</Alert>
+                  <script>
+                    {window.scrollTo({
+                      top: 0,
+                      behavior: "smooth",
+                    })}
+                  </script>
+                </>
+              )}
+            </p>
             {setMessage("It Seem You are not loggedIn or SignUped , HurryUp!")}
             {setTimeout(() => {
               setMessage(null);

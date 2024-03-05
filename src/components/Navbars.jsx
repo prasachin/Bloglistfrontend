@@ -24,7 +24,19 @@ const Menubar = (props) => {
   return (
     <UserProvider>
       <Router>
-        {message && <Alert variant="success">{message}</Alert>}
+        <p>
+          {message && (
+            <>
+              <Alert variant="success">{message}</Alert>
+              <script>
+                {window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                })}
+              </script>
+            </>
+          )}
+        </p>
         <Navbar
           collapseOnSelect
           expand="lg"
