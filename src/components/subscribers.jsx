@@ -28,22 +28,24 @@ const Subscriber = () => {
 
   return (
     <Container>
-      <p>
-        {message && (
-          <>
-            <Alert variant="success">{message}</Alert>
-            <script>
-              {window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              })}
-            </script>
-          </>
-        )}
-      </p>
-      <Row className="mb-4">
-        <Col style={{ paddingTop: "10px" }}>
-          <Button variant="primary" onClick={handleSubscribe}>
+      {message && (
+        <>
+          <Alert variant="success">{message}</Alert>
+          <script>
+            {window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })}
+          </script>
+        </>
+      )}
+      <Row className="my-5">
+        <Col className="bg-dark bg-opacity-60 text-light">
+          <Button
+            variant="primary"
+            onClick={handleSubscribe}
+            style={{ marginTop: "15px" }}
+          >
             Subscribe
           </Button>
           <p>
@@ -52,9 +54,14 @@ const Subscriber = () => {
           </p>
         </Col>
       </Row>
-      <Row className="mb-4">
-        <Col>
-          <Button variant="success" onClick={handleDonate}>
+
+      <Row className="my-5">
+        <Col className="bg-dark bg-opacity-60 text-light">
+          <Button
+            variant="success"
+            onClick={handleDonate}
+            style={{ marginTop: "15px" }}
+          >
             Donate
           </Button>
           <p>
@@ -64,9 +71,13 @@ const Subscriber = () => {
           </p>
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <Button variant="info" onClick={handleSignUp}>
+      <Row className="my-5">
+        <Col className="bg-dark bg-opacity-60 text-light">
+          <Button
+            variant="info"
+            onClick={handleSignUp}
+            style={{ marginTop: "15px" }}
+          >
             Sign Up
           </Button>
           <p>

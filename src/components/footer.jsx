@@ -12,7 +12,7 @@ const Footer = () => {
         </Row>
         <Row className="mt-3">
           <Col className="text-center">
-            <p>&copy; {new Date().getFullYear()} All rights reserved</p>
+            <p>&copy; {new Date().getFullYear()}  Blogging   All rights reserved</p>
           </Col>
         </Row>
       </Container>

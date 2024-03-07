@@ -95,19 +95,17 @@ const Blog = (props) => {
     <div>
       <Row>
         <Col>
-          <p>
-            {message && (
-              <>
-                <Alert variant="success">{message}</Alert>
-                <script>
-                  {window.scrollTo({
-                    top: 0,
-                    behavior: "smooth",
-                  })}
-                </script>
-              </>
-            )}
-          </p>
+          {message && (
+            <>
+              <Alert variant="success">{message}</Alert>
+              <script>
+                {window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                })}
+              </script>
+            </>
+          )}
         </Col>
       </Row>
 
@@ -115,7 +113,7 @@ const Blog = (props) => {
         <Col>
           <h1>TITLE: {blog.title}</h1>
           <h3 style={blogStyle}>AUTHOR: {blog.author}</h3>
-          <h3>
+          <h3 style={blogStyle}>
             URL: <a href={blog.url}>{blog.url}</a>
           </h3>
           <h3 style={blogStyle}>
@@ -124,9 +122,9 @@ const Blog = (props) => {
         </Col>
       </Row>
 
-      <Row style={blogStyle}>
+      <Row>
         <Col>
-          <div>
+          <div style={blogStyle}>
             Click Delete To Remove This Blog
             <Button variant="danger" onClick={handledelete}>
               Delete
@@ -137,7 +135,7 @@ const Blog = (props) => {
       <Row>
         <Col>
           <h4
-            style={{ cursor: "pointer" }}
+            style={{ ...blogStyle, cursor: "pointer" }}
             onClick={() => {
               setCvisible(!Cvisible);
             }}
@@ -153,7 +151,7 @@ const Blog = (props) => {
         </Col>
       </Row>
 
-      <Row style={blogStyle}>
+      <Row>
         <Col>
           {!Cfvisible && (
             <div>
@@ -168,7 +166,7 @@ const Blog = (props) => {
             </div>
           )}
           {Cfvisible && (
-            <div>
+            <div style={blogStyle}>
               <textarea
                 rows="3"
                 cols="50"

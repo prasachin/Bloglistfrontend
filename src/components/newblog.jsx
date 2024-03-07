@@ -1,8 +1,9 @@
-import { Alert, Form, Button } from "react-bootstrap";
+import { Alert, Form, Button, InputGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import blogService from "../services/blogs";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
 
 const Blogform = (props) => {
   const [blogs, setBlogs] = useState([]);
@@ -13,7 +14,7 @@ const Blogform = (props) => {
   const [message, setMessage] = useState(null);
   const [formVisible, setformVisible] = useState(false);
   const [blogVisible, setblogVisible] = useState(false);
-
+  const [filter, setFilter] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const user = location.state && location.state.user;
@@ -81,29 +82,43 @@ const Blogform = (props) => {
       console.error("Error in creating the Blog :", error.message);
     }
   };
+
+  const handleFilterChange = () => {
+    setFilter(event.target.value);
+  };
+
   blogs.sort((a, b) => a.likes - b.likes);
 
   return (
     <form onSubmit={addNew}>
-      <p>
-        {message && (
-          <>
-            <Alert variant="success">{message}</Alert>
-            <script>
-              {window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              })}
-            </script>
-          </>
-        )}
-      </p>
+      {message && (
+        <>
+          <Alert variant="success">{message}</Alert>
+          <script>
+            {window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })}
+          </script>
+        </>
+      )}
       <h1>
         {user.name} Logged in !{" "}
         <Button variant="danger" onClick={handlelogout}>
           Logout
         </Button>
       </h1>
+      <div style={{ display: formVisible ? "" : "none" }}>
+        <Button variant="primary" onClick={toggleformVisibility}>
+          Cancel
+        </Button>
+      </div>
+      <br />
+      <div style={{ display: formVisible ? "none" : "" }}>
+        <Button variant="primary" onClick={toggleformVisibility}>
+          Add Newblog
+        </Button>
+      </div>
       {formVisible && (
         <div>
           <h2>Fill Following Details to add New Blog!</h2>
@@ -153,20 +168,7 @@ const Blogform = (props) => {
           </Button>
         </div>
       )}
-      {blogVisible && (
-        <div>
-          <h2>Existing blogs</h2>
-          {blogs.map((blog) => (
-            <div
-              key={blog.id}
-              style={blogStyle}
-              onClick={() => handleblog(blog)}
-            >
-              <h2 key={blog.id}>{blog.title}</h2>
-            </div>
-          ))}
-        </div>
-      )}
+      <br />
       <div style={{ display: blogVisible ? "" : "none" }}>
         <Button variant="primary" onClick={toggleblogVisibility}>
           HideAll
@@ -178,18 +180,38 @@ const Blogform = (props) => {
           Existing Blogs
         </Button>
       </div>
-      <br />
-      <div style={{ display: formVisible ? "" : "none" }}>
-        <Button variant="primary" onClick={toggleformVisibility}>
-          Cancel
-        </Button>
-      </div>
-      <br />
-      <div style={{ display: formVisible ? "none" : "" }}>
-        <Button variant="primary" onClick={toggleformVisibility}>
-          Add Newblog
-        </Button>
-      </div>
+      {blogVisible && (
+        <div>
+          <h2>Existing blogs</h2>
+          <Form.Group style={{ marginBottom: "20px" }}>
+            <Form.Label>Search Yours</Form.Label>
+            <InputGroup>
+              <InputGroup.Text>
+                <BsSearch />
+              </InputGroup.Text>
+              <Form.Control
+                type="text"
+                value={filter}
+                onChange={handleFilterChange}
+                placeholder="Search By Title"
+              />
+            </InputGroup>
+          </Form.Group>
+          {blogs
+            .filter((blog) =>
+              blog.title.toLowerCase().includes(filter.toLowerCase())
+            )
+            .map((blog) => (
+              <div
+                key={blog.id}
+                style={blogStyle}
+                onClick={() => handleblog(blog)}
+              >
+                <h2 key={blog.id}>{blog.title}</h2>
+              </div>
+            ))}
+        </div>
+      )}
     </form>
   );
 };

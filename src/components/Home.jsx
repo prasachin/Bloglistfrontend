@@ -31,19 +31,17 @@ const Home = () => {
 
   return (
     <Container>
-      <p>
-        {message && (
-          <>
-            <Alert variant="warning">{message}</Alert>
-            <script>
-              {window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              })}
-            </script>
-          </>
-        )}
-      </p>
+      {message && (
+        <>
+          <Alert variant="warning">{message}</Alert>
+          <script>
+            {window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })}
+          </script>
+        </>
+      )}
       <Row className="my-5">
         <Col className="bg-dark bg-opacity-60 text-light">
           <h1 className="fw-bold">Welcome to Our Blog Platform!</h1>

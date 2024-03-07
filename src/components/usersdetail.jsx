@@ -3,6 +3,8 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import blogService from "../services/blogs";
 
 const Users = () => {
+  const defaulticon =
+    "https://res.cloudinary.com/dbduadsbd/image/upload/v1709375511/ohionixpgqmfzsxnpftt.png";
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -17,6 +19,15 @@ const Users = () => {
           <Col key={user.id}>
             <Card className="bg-dark bg-opacity-80 text-light">
               <Card.Body>
+                <div className="profile-icon">
+                  <img
+                    src={user.profileicon || defaulticon}
+                    alt="Profile Icon"
+                    width={50}
+                    height={50}
+                    className="rounded-circle"
+                  />
+                </div>
                 <Card.Title>{user.name}</Card.Title>
                 <Card.Text>
                   {user.blogs.length}{" "}

@@ -12,6 +12,7 @@ import Subscriber from "./subscribers";
 import Donation from "./Donation";
 import { UserProvider, UserContext } from "./UserContext";
 import EditButton from "./profile";
+import Edit from "./editprofile";
 
 const Menubar = (props) => {
   const [message, setMessage] = useState(null);
@@ -24,19 +25,17 @@ const Menubar = (props) => {
   return (
     <UserProvider>
       <Router>
-        <p>
-          {message && (
-            <>
-              <Alert variant="success">{message}</Alert>
-              <script>
-                {window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                })}
-              </script>
-            </>
-          )}
-        </p>
+        {message && (
+          <>
+            <Alert variant="success">{message}</Alert>
+            <script>
+              {window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              })}
+            </script>
+          </>
+        )}
         <Navbar
           collapseOnSelect
           expand="lg"
@@ -138,6 +137,7 @@ const Menubar = (props) => {
           <Route path="/donation" element={<Donation />} />
           <Route path="/subscribe" element={<Subscriber />} />
           <Route path="/profile" element={<EditButton />} />
+          <Route path="/editprofile" element={<Edit />} />
         </Routes>
       </Router>
     </UserProvider>

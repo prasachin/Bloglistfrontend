@@ -2,7 +2,6 @@ import axios from "axios";
 const baseUrl = "https://bloglistapp-vej2.onrender.com/api/blogs";
 
 const signurl = "https://bloglistapp-vej2.onrender.com/api/users";
-// const signurl = "http://localhost:3003/api/users";
 
 let token = null;
 
@@ -36,6 +35,12 @@ const create = async (newObject) => {
 
 const update = (id) => {
   const request = axios.put(`${baseUrl}/${id}`);
+  return request.then((response) => response.data);
+};
+
+const updateuser = (id, name, username, profileicon) => {
+  const newdata = { name: name, username: username, profileicon: profileicon };
+  const request = axios.put(`${signurl}/${id}`, newdata);
   return request.then((response) => response.data);
 };
 
@@ -75,5 +80,5 @@ export default {
   getallusers,
   getBlogById,
   addcomment,
+  updateuser,
 };
-

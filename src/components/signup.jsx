@@ -54,19 +54,17 @@ const Signup = (props) => {
 
   return (
     <form onSubmit={handlesignup}>
-      <p>
-        {message && (
-          <>
-            <Alert variant="success">{message}</Alert>
-            <script>
-              {window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              })}
-            </script>
-          </>
-        )}
-      </p>
+      {message && (
+        <>
+          <Alert variant="success">{message}</Alert>
+          <script>
+            {window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })}
+          </script>
+        </>
+      )}
       <Form.Group>
         <Form.Label>Username:</Form.Label>
         <Form.Control

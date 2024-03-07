@@ -46,19 +46,17 @@ const About = () => {
 
   return (
     <Container>
-      <p>
-        {message && (
-          <>
-            <Alert variant="warning">{message}</Alert>
-            <script>
-              {window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              })}
-            </script>
-          </>
-        )}
-      </p>
+      {message && (
+        <>
+          <Alert variant="warning">{message}</Alert>
+          <script>
+            {window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })}
+          </script>
+        </>
+      )}
       <Row className="my-5">
         <Col className="bg-dark bg-opacity-60 text-light">
           <h1 className="fw-bold">About Blog List App</h1>
@@ -76,6 +74,7 @@ const About = () => {
             Explore some of the famous tours featured in our blog community.
             Here are a few highlights:
           </p>
+          <h5>Click below to View!</h5>
         </Col>
       </Row>
       <Row>
