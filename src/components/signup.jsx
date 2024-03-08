@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 import blogService from "../services/blogs";
 
-const Signup = (props) => {
+const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");

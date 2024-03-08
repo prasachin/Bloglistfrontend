@@ -83,7 +83,7 @@ const Blogform = (props) => {
     }
   };
 
-  const handleFilterChange = () => {
+  const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
 

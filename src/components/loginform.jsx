@@ -3,7 +3,6 @@ import authService from "../services/login";
 import { useState } from "react";
 import blogService from "../services/blogs";
 import { useNavigate } from "react-router-dom";
-import Blog from "./blogdetail";
 import { useUser } from "./UserContext";
 
 const signstyle = {
@@ -18,7 +17,6 @@ const Loginform = (props) => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
   const [user, setUser] = useState(null);
-  const showBlog = null;
 
   const { setuser } = useUser();
   const navigate = useNavigate();
@@ -91,7 +89,7 @@ const Loginform = (props) => {
           onClick={() => {
             navigate("/signupform");
           }}
-          style={{ cursor: "pointer", color: "lightgrey" }}
+          style={{ cursor: "pointer", color: "blue" }}
         >
           SignUp For Free
         </h4>
