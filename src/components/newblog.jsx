@@ -4,6 +4,7 @@ import blogService from "../services/blogs";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
+import { useUser } from "./UserContext";
 
 const Blogform = (props) => {
   const [blogs, setBlogs] = useState([]);
@@ -16,6 +17,7 @@ const Blogform = (props) => {
   const [blogVisible, setblogVisible] = useState(false);
   const [filter, setFilter] = useState("");
   const navigate = useNavigate();
+  const { setuser } = useUser();
   const location = useLocation();
   const user = location.state && location.state.user;
   const toggleformVisibility = () => {
@@ -46,6 +48,7 @@ const Blogform = (props) => {
       setMessage(`'${user.name}' Logged Out  Succesfully !`);
       setTimeout(() => {
         setMessage(null);
+        setuser(null);
         navigate("/loginform");
       }, 3000);
     }
