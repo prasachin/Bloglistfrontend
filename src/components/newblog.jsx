@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { useUser } from "./UserContext";
+import { FaPowerOff } from "react-icons/fa";
 
 const Blogform = (props) => {
   const [blogs, setBlogs] = useState([]);
@@ -41,6 +42,7 @@ const Blogform = (props) => {
     cursor: "pointer",
     color: "blue",
   };
+
   const handlelogout = () => {
     const confirm = window.confirm(`Are you sure to logout ${user.name}!!`);
     if (confirm) {
@@ -107,9 +109,10 @@ const Blogform = (props) => {
       )}
       <h1>
         {user.name} Logged in !{" "}
-        <Button variant="danger" onClick={handlelogout}>
-          Logout
-        </Button>
+        <FaPowerOff
+          onClick={handlelogout}
+          style={{ color: "red", cursor: "pointer" }}
+        />
       </h1>
       <div style={{ display: formVisible ? "" : "none" }}>
         <Button variant="primary" onClick={toggleformVisibility}>

@@ -3,7 +3,9 @@ import { Alert, Row, Col, Form, InputGroup } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import blogService from "../services/blogs";
-
+import { FaPowerOff } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+import { useUser } from "./UserContext";
 import {
   MDBCol,
   MDBContainer,
@@ -25,6 +27,9 @@ export default function EditButton() {
   const [show, setshow] = useState(false);
   const [allblogs, setallBlogs] = useState([]);
   const [filter, setFilter] = useState("");
+  const { setuser } = useUser();
+  const locations = useLocation();
+  const user = locations.state && locations.state.user;
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -50,11 +55,40 @@ export default function EditButton() {
     setFilter(event.target.value);
   };
 
+  const handlelogout = () => {
+    const confirm = window.confirm(`Are you sure to logout..?`);
+    if (confirm) {
+      window.localStorage.clear();
+      setMessage(`Logging Out...`);
+      setTimeout(() => {
+        setMessage(null);
+        setuser(null);
+        navigate("/loginform");    
+      }, 2000);
+    }
+  };
   return (
     <UserContext.Consumer>
       {(user) =>
         user.user ? (
           <div className="gradient-custom-2">
+            {message && (
+              <>
+                <Alert variant="success">{message}</Alert>
+                <script>
+                  {window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  })}
+                </script>
+              </>
+            )}
+            <h1>
+              <FaPowerOff
+                onClick={handlelogout}
+                style={{ color: "red", cursor: "pointer" }}
+              />
+            </h1>
             <MDBContainer className="py-5 ">
               <MDBRow className="justify-content-center ">
                 <MDBCol lg="8" xl="7">

@@ -48,10 +48,19 @@ const Menubar = (props) => {
             <Nav className="me-auto">
               <Nav.Link href="#" as="span">
                 <Link style={elementstyle} to="/">
-                  Home
+                  <Image
+                    src="/blog.png"
+                    alt="Home"
+                    roundedCircle
+                    style={{
+                      width: "30px",
+                      height: "26px",
+                      objectFit: "cover",
+                    }}
+                  />
                 </Link>
               </Nav.Link>
-              <Nav.Link href="#" as="span">
+              <Nav.Link href="#" as="span" style={{ marginLeft: "-50px" }}>
                 <Link style={elementstyle} to="/About">
                   About
                 </Link>
