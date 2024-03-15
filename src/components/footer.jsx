@@ -25,7 +25,7 @@ const Footer = () => {
                 <Accordion.Body>
                   <p>
                     Bloglist App is a platform for sharing insightful articles
-                    and stories related to mechanical engineering and academia.
+                    and stories related to academia and nonacademia.
                     Join our community to stay updated!
                   </p>
                 </Accordion.Body>
