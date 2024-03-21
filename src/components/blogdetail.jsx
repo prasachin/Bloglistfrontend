@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import blogService from "../services/blogs";
-import { Row, Col, Button, Alert } from "react-bootstrap";
+import { Row, Col, Button, Alert, Container } from "react-bootstrap";
 
 const Blog = (props) => {
   const [blog, setBlog] = useState(null);
@@ -58,7 +58,7 @@ const Blog = (props) => {
           setMessage(`${blog.title} Removed from your App`);
           setTimeout(() => {
             setMessage(null);
-            navigate("/");
+            navigate("/blogform");
           }, 2000);
         } catch (error) {
           console.error("Cant delete this blog !", error.message);
@@ -90,9 +90,11 @@ const Blog = (props) => {
     borderWidth: 1.5,
     marginBottom: 8,
   };
+  const defaultvid =
+    "https://res.cloudinary.com/dbduadsbd/video/upload/v1711011151/Untitled_video_-_Made_with_Clipchamp_skt7tb.mp4";
 
   return (
-    <div>
+    <Container>
       <Row>
         <Col>
           {message && (
@@ -132,6 +134,20 @@ const Blog = (props) => {
           </div>
         </Col>
       </Row>
+
+      <Row>
+        <Col>
+          {
+            <div style={blogStyle}>
+              <video controls style={{ width: "100%", height: "auto" }}>
+                <source src={blog.video || defaultvid} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          }
+        </Col>
+      </Row>
+
       <Row>
         <Col>
           <h4
@@ -181,7 +197,7 @@ const Blog = (props) => {
           )}
         </Col>
       </Row>
-    </div>
+    </Container>
   );
 };
 

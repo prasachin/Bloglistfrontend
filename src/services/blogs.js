@@ -25,11 +25,12 @@ const getallusers = () => {
   return request.then((response) => response.data);
 };
 
-const create = async (newObject) => {
+const create = async (formData) => {
   const config = {
     headers: { Authorization: token },
+    "Content-Type": "multipart/form-data",
   };
-  const response = await axios.post(baseUrl, newObject, config);
+  const response = await axios.post(baseUrl, formData, config);
   return response.data;
 };
 

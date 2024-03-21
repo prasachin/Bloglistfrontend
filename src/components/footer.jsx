@@ -7,6 +7,7 @@ import {
   FaBell,
   FaEnvelope,
   FaTelegram,
+  FaGithub,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -25,8 +26,8 @@ const Footer = () => {
                 <Accordion.Body>
                   <p>
                     Bloglist App is a platform for sharing insightful articles
-                    and stories related to academia and nonacademia.
-                    Join our community to stay updated!
+                    and stories related to academia and nonacademia. Join our
+                    community to stay updated!
                   </p>
                 </Accordion.Body>
               </Accordion.Item>
@@ -51,10 +52,10 @@ const Footer = () => {
             <h2>Connect Us</h2>
             <div>
               <a
-                href="https://www.facebook.com"
+                href="https://github.com/prasachin"
                 style={{ marginRight: "50px" }}
               >
-                <FaFacebook />
+                <FaGithub />
               </a>
               <a
                 href="https://x.com/SACHINP05372841"

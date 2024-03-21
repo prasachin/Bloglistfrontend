@@ -22,10 +22,20 @@ const Signup = () => {
     event.preventDefault();
 
     const formData = new FormData();
+
     formData.append("username", username);
     formData.append("name", name);
     formData.append("password", password);
-    formData.append("profileicon", profileicon);
+    if (!profileicon) {
+      const defaulticon =
+        "https://res.cloudinary.com/dbduadsbd/image/upload/v1709375511/ohionixpgqmfzsxnpftt.png";
+      const defaultIconFile = await fetch(defaulticon).then((res) =>
+        res.blob()
+      );
+      formData.append("profileicon", defaultIconFile);
+    } else {
+      formData.append("profileicon", profileicon);
+    }
     try {
       const newuser = await blogService.signup(formData);
       setMessage(`${name} signed up , Login And Create your blogs!`);
@@ -96,7 +106,6 @@ const Signup = () => {
           type="file"
           onChange={handlefilechange}
           accept="image/*"
-          required
           style={{
             backgroundColor: "black",
             color: "white",
