@@ -69,9 +69,9 @@ const About = () => {
       </Row>
       <Row className="my-5">
         <Col className="bg-dark bg-opacity-60 text-light">
-          <h1 className="fw-bold">Famous Tour</h1>
+          <h1 className="fw-bold">Famous Blogs</h1>
           <p>
-            Explore some of the famous tours featured in our blog community.
+            Explore some of the famous Blogs featured in our blog community.
             Here are a few highlights:
           </p>
           <h5>Click below to View!</h5>
