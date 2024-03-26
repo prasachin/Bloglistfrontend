@@ -11,6 +11,10 @@ const Users = () => {
     blogService.getallusers().then((users) => setUsers(users));
   }, []);
 
+  if (users.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Container>
       <h1 className="mt-5 mb-4">Users of this App</h1>

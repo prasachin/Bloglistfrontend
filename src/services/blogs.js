@@ -1,5 +1,6 @@
 import axios from "axios";
 const baseUrl = "https://bloglistapp-vej2.onrender.com/api/blogs";
+// const baseUrl = "http://localhost:3003/api/blogs";
 
 const signurl = "https://bloglistapp-vej2.onrender.com/api/users";
 
@@ -37,11 +38,19 @@ const create = async (formData) => {
   }
 
   const config = {
-    headers: { Authorization: token },
-    "Content-Type": "multipart/form-data",
+    headers: {
+      Authorization: token,
+      "Content-Type": "multipart/form-data",
+    },
   };
-  const response = await axios.post(baseUrl, formdata, config);
-  return response.data;
+
+  try {
+    const response = await axios.post(baseUrl, formdata, config);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating blog:", error);
+    throw error;
+  }
 };
 
 const update = (id) => {

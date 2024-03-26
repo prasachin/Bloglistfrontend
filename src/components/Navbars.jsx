@@ -123,7 +123,7 @@ const Menubar = (props) => {
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item href="/loginform">Login</Dropdown.Item>
-                        <Dropdown.Item href="/signupform">
+                        <Dropdown.Item href="/Signupform">
                           Sign Up
                         </Dropdown.Item>
                       </Dropdown.Menu>
