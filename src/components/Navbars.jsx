@@ -122,9 +122,11 @@ const Menubar = (props) => {
                         />
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
-                        <Dropdown.Item href="/loginform">Login</Dropdown.Item>
-                        <Dropdown.Item href="/Signupform">
-                          Sign Up
+                        <Dropdown.Item as={Link} to="/loginform">
+                          Login
+                        </Dropdown.Item>
+                        <Dropdown.Item as={Link} to="/Signupform">
+                          Signup
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
