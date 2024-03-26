@@ -26,11 +26,21 @@ const getallusers = () => {
 };
 
 const create = async (formData) => {
+  const formdata = new FormData();
+  formdata.append("title", formData.get("title"));
+  formdata.append("author", formData.get("author"));
+  formdata.append("url", formData.get("url"));
+  formdata.append("likes", formData.get("likes"));
+
+  if (formData.get("video")) {
+    formdata.append("video", formData.get("video"));
+  }
+
   const config = {
     headers: { Authorization: token },
     "Content-Type": "multipart/form-data",
   };
-  const response = await axios.post(baseUrl, formData, config);
+  const response = await axios.post(baseUrl, formdata, config);
   return response.data;
 };
 
